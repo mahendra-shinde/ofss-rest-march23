@@ -1,4 +1,4 @@
-package com.mahendra.rest;
+package com.mahendra.exceptions;
 
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;

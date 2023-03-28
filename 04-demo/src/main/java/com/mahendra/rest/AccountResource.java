@@ -1,6 +1,8 @@
 package com.mahendra.rest;
 
 import com.mahendra.data.AccountDAO;
+import com.mahendra.exceptions.AccountNotFoundException;
+import com.mahendra.exceptions.NoAccountException;
 import com.mahendra.models.Account;
 
 import jakarta.ws.rs.*;
@@ -17,7 +19,7 @@ public class AccountResource {
 	public Account findAccount(@QueryParam("accnum") String accNum) {
 		Response response = null;
 		if(accNum ==null ||  !accNum.equalsIgnoreCase("SB1111")) {
-			throw new RuntimeException("Account "+accNum+" not found!");
+			throw new AccountNotFoundException(accNum);
 		}
 		return new Account("Chandrachud", "SB1111", "Savings");
 		
@@ -26,6 +28,9 @@ public class AccountResource {
 	
 	@POST @Consumes("application/json")
 	public String create(Account acc) {
+		if(acc.getAccNum() ==null ) {
+			throw new NoAccountException();
+		}
 		System.out.println("Update "+acc.getAccNum());
 		dao.add(acc);
 		return "Updated";
