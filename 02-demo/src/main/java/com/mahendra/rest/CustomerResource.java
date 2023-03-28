@@ -21,10 +21,19 @@ public class CustomerResource {
 
 	@GET
 	@Produces("application/json")
+	
 	public List<Customer> getAll() {
 		return customers;
 	}
 
+	
+	@GET
+	@Produces("application/json")
+	@Path("/1")
+	public Customer findCustomer() {
+		return customers.get(0);
+	}
+	
 	@GET
 	@Produces("text/html")
 	public String getAllHTML() {
