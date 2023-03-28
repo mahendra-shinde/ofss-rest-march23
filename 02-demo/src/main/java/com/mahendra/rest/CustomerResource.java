@@ -21,7 +21,6 @@ public class CustomerResource {
 
 	@GET
 	@Produces("application/json")
-	
 	public List<Customer> getAll() {
 		return customers;
 	}

@@ -16,7 +16,8 @@ public class AccountDAO {
 	private List<Account> accountList = new LinkedList<>();
 	
 	private AccountDAO() {
-	
+		accountList.add(new Account("Tiger","SB3487684684" , "Savings"));
+		accountList.add(new Account("Lion","SB33455684684" , "Savings"));
 	}
 	
 	

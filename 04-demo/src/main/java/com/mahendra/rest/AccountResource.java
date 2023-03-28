@@ -7,7 +7,6 @@ import com.mahendra.models.Account;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
 
 @Path("/account")
 @Produces("application/json")
@@ -37,7 +36,8 @@ public class AccountResource {
 	}
 	
 	@DELETE 
-	public String delete(@QueryParam("accNum") String accNum) {
+	@Path("{accNum}") /// DELETE /account/12345
+	public String delete(@PathParam("accNum") String accNum) {
 		System.out.println("Deleting account "+accNum);
 		dao.deleteByAccNum(accNum);
 		return "Deleted !";
